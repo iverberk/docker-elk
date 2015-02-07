@@ -1,0 +1,9 @@
+forge "https://forgeapi.puppetlabs.com"
+
+# External forge base modules
+
+mod "puppetlabs/stdlib", "4.5.1"
+mod "puppetlabs/haproxy", "1.1.0"
+mod "elasticsearch/elasticsearch", "0.9.0"
+mod "elasticsearch/logstash", "0.5.1"
+mod "arioch/keepalived", "1.1.1"

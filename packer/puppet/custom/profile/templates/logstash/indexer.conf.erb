@@ -1,0 +1,31 @@
+input {
+	
+<% scope.lookupvar('profile::logstash::redis_instances').each do |instance| -%>
+
+	<% host, port = instance.split(':') -%>
+
+	redis {
+		host => "<%= host %>"
+		port => <%= port %>
+		data_type => "list"
+		type => "redis-input"
+		key => "logstash"
+	}
+
+<% end -%>
+
+}
+
+filter {
+	
+}
+
+output {
+	
+	elasticsearch {
+		host => "<%= scope.lookupvar('profile::logstash::es_instance') -%>"
+		protocol => "http"
+		cluster => "logstash"
+	}
+
+}

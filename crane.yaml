@@ -1,0 +1,134 @@
+---
+containers:
+
+  redis01:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      volumes-from: ["redis01_datastore"]
+      expose: ["6379"]
+      cmd: sleep infinity
+      hostname: redis01.localdomain
+      detach: true
+
+  redis01_datastore:
+    image: centos:centos6
+    run:
+      volume: ["/var/lib/redis-6379"]
+      cmd: ["true"]
+      detach: true
+
+  redis02:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      volumes-from: ["redis02_datastore"]
+      expose: ["6379"]
+      cmd: sleep infinity
+      hostname: redis02.localdomain
+      detach: true
+
+  redis02_datastore:
+    image: centos:centos6
+    run:
+      volume: ["/var/lib/redis-6379"]
+      cmd: ["true"]
+      detach: true
+
+  shipper01:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      expose: ["5514"]
+      cmd: sleep infinity
+      hostname: shipper01.localdomain
+      detach: true
+
+  shipper02:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      expose: ["5514"]
+      cmd: sleep infinity
+      hostname: shipper02.localdomain
+      detach: true
+
+  shipper-lb01:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: shipper-lb01.localdomain
+      detach: true
+
+  shipper-lb02:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: shipper-lb02.localdomain
+      detach: true
+
+  indexer01:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: indexer01.localdomain
+      detach: true
+
+  indexer02:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: indexer02.localdomain
+      detach: true
+
+  es01:
+    image: centos:centos6
+    run:
+      volumes-from: ["es01_datastore"]
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: es01.localdomain
+      detach: true
+
+  es02:
+    image: centos:centos6
+    run:
+      volumes-from: ["es02_datastore"]
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: es02.localdomain
+      detach: true
+
+  es01_datastore:
+    image: centos:centos6
+    run:
+      volumes: ["/usr/share/elasticsearch"]
+      cmd: ["true"]
+      detach: true
+
+  es02_datastore:
+    image: centos:centos6
+    run:
+      volumes: ["/usr/share/elasticsearch"]
+      cmd: ["true"]
+      detach: true
+
+  es-lb01:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: es-lb01.localdomain
+      detach: true
+
+  es-lb02:
+    image: centos:centos6
+    run:
+      dns: ["172.17.42.1", "8.8.8.8", "8.8.4.4"]
+      cmd: sleep infinity
+      hostname: es-lb02.localdomain
+      detach: true

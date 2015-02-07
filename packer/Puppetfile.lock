@@ -1,0 +1,26 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    arioch-keepalived (1.1.1)
+      puppetlabs-concat (>= 1.0.2)
+      puppetlabs-stdlib (>= 4.1.0)
+    elasticsearch-elasticsearch (0.9.0)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    elasticsearch-logstash (0.5.1)
+      ispavailability-file_concat (>= 0.1.0)
+      puppetlabs-stdlib (>= 3.2.0)
+    ispavailability-file_concat (0.1.0)
+    puppetlabs-concat (1.1.2)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs-haproxy (1.1.0)
+      puppetlabs-concat (>= 1.1.0)
+      puppetlabs-stdlib (>= 2.4.0)
+    puppetlabs-stdlib (4.5.1)
+
+DEPENDENCIES
+  arioch-keepalived (= 1.1.1)
+  elasticsearch-elasticsearch (= 0.9.0)
+  elasticsearch-logstash (= 0.5.1)
+  puppetlabs-haproxy (= 1.1.0)
+  puppetlabs-stdlib (= 4.5.1)
+

@@ -1,0 +1,33 @@
+input {
+  
+  syslog {
+    port => 5514
+    type => syslog
+  }
+
+}
+
+filter {
+
+}
+
+output {
+	
+	# Output to Redis queue
+	redis {
+		host => ["<%= scope.lookupvar('profile::logstash::joined_redis_instances') -%>"]
+		shuffle_hosts => true
+		data_type => "list"
+		key => "logstash"
+	}
+	
+	# Forward plain message to central syslog server
+	tcp {
+	    host => "syslog.fbk.eur.nl"
+	    port => 514
+	    codec => plain {
+      		format => "%{message}"
+    	}
+    }
+
+}

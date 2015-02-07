@@ -1,0 +1,3 @@
+packer/puppet/common/modules
+packer/puppet/common/.tmp
+packer/puppet/common/.librarian

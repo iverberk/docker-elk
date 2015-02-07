@@ -1,0 +1,22 @@
+{
+    "builders":
+    [
+        {
+            "type": "docker",
+            "image": "centos:centos6",
+            "export_path": "elasticsearch.tar"
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "script": "scripts/puppet.sh"
+        },
+        {
+            "type": "puppet-masterless",
+            "manifest_file": "puppet/manifests/elasticsearch.pp",
+            "module_paths": ["puppet/common", "puppet/custom"],
+            "prevent_sudo": true
+        }
+    ]
+}
